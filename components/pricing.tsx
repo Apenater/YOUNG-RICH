@@ -16,8 +16,7 @@ export function Pricing() {
             Las clases inician el lunes {site.startLabel} a las {site.time}.
           </Reveal>
 
-          <Reveal delay={200} className="flex flex-col gap-4">
-            <span className="label-mono text-xs text-subtle">Faltan para la primera clase</span>
+          <Reveal delay={200}>
             <Countdown target={site.startISO} />
           </Reveal>
         </div>

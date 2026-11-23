@@ -7,6 +7,8 @@ import type { IconName } from "@/components/icons";
 
 export const site = {
   name: "Young & Rich",
+  /** Dominio público. Se usa para las URLs absolutas de la portada (WhatsApp, redes). */
+  url: "https://young-rich.edenstudio.dev",
   price: "$97",
   startLabel: "4 de enero",
   // TODO: confirmar año y zona horaria (se asume El Salvador, UTC-6).
@@ -161,6 +163,14 @@ export const eden = {
   logo: "/partners/eden-footer.png",
   icon: "/partners/eden-icon.png",
 };
+
+/** Datos del ticket del hero; también los usa la portada para redes (app/opengraph-image.tsx). */
+export const ticketFacts = [
+  { label: "Inicio", value: "04 Ene" },
+  { label: "Horario", value: "7:45 PM" },
+  { label: "Días", value: "Lun · Jue" },
+  { label: "Sesiones", value: "06" },
+];
 
 export const ticketChecklist = [
   "6 clases en vivo · lunes y jueves",

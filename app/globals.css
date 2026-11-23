@@ -179,9 +179,12 @@
       translate 0.3s var(--ease-soft),
       border-color 0.3s var(--ease-soft);
   }
-  .card-lift:hover {
-    translate: 0 -4px;
-    border-color: color-mix(in oklab, var(--color-accent) 45%, transparent);
+  /* Solo con mouse: en pantallas táctiles el :hover se queda "pegado" tras tocar. */
+  @media (hover: hover) {
+    .card-lift:hover {
+      translate: 0 -4px;
+      border-color: color-mix(in oklab, var(--color-accent) 45%, transparent);
+    }
   }
 
   /* Palabra resaltada con el fondo del acento. */
@@ -240,6 +243,11 @@
 
   html {
     scroll-behavior: smooth;
+  }
+
+  /* Al saltar a una sección, deja aire bajo el menú fijo. */
+  section[id] {
+    scroll-margin-top: 12px;
   }
 
   body {

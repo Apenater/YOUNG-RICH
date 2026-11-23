@@ -31,9 +31,9 @@ export function Manifesto() {
           </Reveal>
           <Reveal
             delay={200}
-            className="flex flex-wrap items-center gap-4.5 border-t border-paper-line pt-8"
+            className="flex items-center gap-4.5 border-t border-paper-line pt-8"
           >
-            <div aria-hidden="true" className="flex">
+            <div aria-hidden="true" className="flex flex-none">
               <span className="label-mono grid size-13 place-items-center rounded-full border-3 border-paper bg-ink text-[13px] text-paper">
                 JP
               </span>
@@ -41,7 +41,7 @@ export function Manifesto() {
                 D
               </span>
             </div>
-            <p className="text-[17px] leading-normal text-body">
+            <p className="min-w-0 text-[17px] leading-normal text-body">
               Creado por <strong className="text-ink">Javier Portillo</strong> y{" "}
               <strong className="text-ink">David Barrientos</strong>, dos jóvenes salvadoreños.
             </p>

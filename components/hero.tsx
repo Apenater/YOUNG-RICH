@@ -1,6 +1,6 @@
 import { Accent, ButtonLink, Container } from "@/components/ui";
 import { Words } from "@/components/words";
-import { site } from "@/lib/content";
+import { site, ticketFacts } from "@/lib/content";
 
 export function Hero() {
   return (
@@ -25,10 +25,10 @@ export function Hero() {
             className="flex flex-wrap gap-3 motion-safe:animate-rise"
             style={{ animationDelay: "570ms" }}
           >
-            <ButtonLink href="#ticket" arrow>
+            <ButtonLink href="#ticket" arrow className="w-full sm:w-auto">
               Reservar mi cupo
             </ButtonLink>
-            <ButtonLink href="#programa" variant="outline" className="font-semibold">
+            <ButtonLink href="#programa" variant="outline" className="w-full font-semibold sm:w-auto">
               Ver las 6 clases
             </ButtonLink>
           </div>
@@ -51,13 +51,6 @@ function Perforation() {
 }
 
 function Ticket() {
-  const facts = [
-    { label: "Inicio", value: "04 Ene" },
-    { label: "Horario", value: "7:45 PM" },
-    { label: "Días", value: "Lun · Jue" },
-    { label: "Sesiones", value: "06" },
-  ];
-
   return (
     <div className="relative mx-auto w-full max-w-[460px] rotate-[2.5deg] rounded-3xl bg-paper p-7.5 text-ink shadow-[0_40px_90px_rgb(0_0_0/0.5)] motion-safe:animate-float">
       <div className="label-mono text-xs text-subtle">
@@ -71,7 +64,7 @@ function Ticket() {
       <Perforation />
 
       <dl className="grid grid-cols-2 gap-x-4 gap-y-5.5">
-        {facts.map((fact) => (
+        {ticketFacts.map((fact) => (
           <div key={fact.label} className="flex flex-col gap-1.5">
             <dt className="label-mono text-[11px] text-subtle">{fact.label}</dt>
             <dd className="font-display text-[24px] leading-none tracking-[-0.02em] whitespace-nowrap [font-stretch:112%] sm:text-[30px]">

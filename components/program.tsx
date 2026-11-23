@@ -16,7 +16,7 @@ export function Program() {
       <Container className="flex flex-col gap-14">
         <div className="grid items-end gap-12 lg:grid-cols-[1.4fr_1fr]">
           <SectionTitle>
-            Seis clases para empezar <Accent className="text-accent">desde 0.</Accent>
+            Seis clases para empezar <Accent className="text-accent">desde&nbsp;0.</Accent>
           </SectionTitle>
           <Reveal as="p" delay={150} className="text-lg leading-relaxed text-muted-2">
             Aprenderás todo sobre el mundo de las inversiones en acciones, criptomonedas, trading,
@@ -42,7 +42,7 @@ export function Program() {
         <ol className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {classes.map((item, i) => (
             <Reveal as="li" key={item.n} delay={(i % 3) * 90}>
-              <article className="card-lift flex h-full min-h-[300px] flex-col gap-6 rounded-[22px] border border-line bg-ink-2 p-7">
+              <article className="card-lift flex h-full flex-col sm:min-h-[300px] gap-4 rounded-[22px] border border-line bg-ink-2 p-6 sm:gap-6 sm:p-7">
                 <div className="label-mono flex items-center justify-between gap-3 text-xs">
                   <span className="text-accent">Clase {item.n}</span>
                   <time
@@ -52,8 +52,8 @@ export function Program() {
                     {item.date}
                   </time>
                 </div>
-                <Icon name={item.icon} strokeWidth={1.4} className="size-10 text-accent" />
-                <h3 className="mt-auto text-[26px] leading-[1.12] font-bold tracking-[-0.02em]">
+                <Icon name={item.icon} strokeWidth={1.4} className="size-8 text-accent sm:size-10" />
+                <h3 className="mt-auto text-[22px] leading-[1.15] font-bold tracking-[-0.02em] sm:text-[26px] sm:leading-[1.12]">
                   {item.title}
                 </h3>
                 <p className="label-mono text-[11px] text-muted">{item.tag}</p>
