@@ -2,6 +2,12 @@ import type { ReactNode, SVGProps } from "react";
 
 const paths = {
   arrowUpRight: <path d="M7 17L17 7M8 7h9v9" />,
+  arrowRight: (
+    <>
+      <path d="M5 12h14" />
+      <path d="m12 5 7 7-7 7" />
+    </>
+  ),
   clock: (
     <>
       <circle cx="12" cy="12" r="9" />
@@ -97,6 +103,13 @@ const paths = {
     <>
       <path d="M20.6 13.4l-7.2 7.2a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z" />
       <circle cx="8" cy="8" r="1.5" />
+    </>
+  ),
+  music: (
+    <>
+      <path d="M9 18V5l12-2v13" />
+      <circle cx="6" cy="18" r="3" />
+      <circle cx="18" cy="16" r="3" />
     </>
   ),
   check: <polyline points="5 12 10 17 19 7" />,

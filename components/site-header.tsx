@@ -12,7 +12,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 flex justify-center px-4 pt-4">
       <nav
         aria-label="Principal"
-        className="flex w-full max-w-[1240px] items-center justify-between gap-3 rounded-full border border-paper/12 bg-ink-2/80 py-2 pr-2 pl-5 backdrop-blur-lg sm:gap-4 sm:pl-6"
+        className="flex w-full max-w-[1240px] items-center justify-between gap-3 motion-safe:animate-nav-in rounded-full border border-paper/12 bg-ink-2/80 py-2 pr-2 pl-5 backdrop-blur-lg sm:gap-4 sm:pl-6"
       >
         <a
           href="#top"

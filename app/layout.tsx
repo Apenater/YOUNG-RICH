@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Young & Rich",
     description:
-      "Seis clases en vivo para aprender a invertir, emprender y pensar con la mentalidad correcta. Inicio: 4 de enero. Solo 50 cupos.",
+      "Seis clases en vivo para aprender a invertir, emprender y pensar con la mentalidad correcta. Inicio: 4 de enero.",
     locale: "es_SV",
     type: "website",
   },
@@ -43,7 +43,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="es"
       className={`${archivo.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable} antialiased`}
     >
-      <body>{children}</body>
+      <body>
+        {/* Sin JavaScript no hay quien dispare los revelados: se muestra todo de inicio. */}
+        <noscript>
+          <style>{".rv,.rv-blur{opacity:1!important;filter:none!important;translate:none!important}.hl{background-size:100% 100%!important}"}</style>
+        </noscript>
+        {children}
+      </body>
     </html>
   );
 }

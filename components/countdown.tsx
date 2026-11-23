@@ -1,6 +1,6 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
+import { Fragment, useSyncExternalStore } from "react";
 
 function subscribe(onTick: () => void) {
   const id = setInterval(onTick, 1000);
@@ -41,15 +41,31 @@ export function Countdown({ target }: { target: string }) {
     ];
   }
 
+  // Un solo panel con dos puntos entre cifras, como un reloj. Las cifras y los dos
+  // puntos comparten tamaño para quedar alineados.
   return (
-    <div role="timer" aria-label="Tiempo para la primera clase" className="grid max-w-[520px] grid-cols-4 gap-2.5">
-      {units.map((unit) => (
-        <div key={unit.label} className="flex flex-col items-center gap-1.5 rounded-2xl bg-ink px-3 py-4.5">
-          <span className="font-display text-[clamp(28px,3.4vw,46px)] leading-none tracking-[-0.03em] text-accent tabular-nums [font-stretch:112%]">
-            {unit.value}
-          </span>
-          <span className="label-mono text-[11px] text-muted">{unit.label}</span>
-        </div>
+    <div
+      role="timer"
+      aria-label="Tiempo para la primera clase"
+      className="grid w-full max-w-[560px] grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] items-start rounded-3xl bg-ink px-4 py-6 sm:px-8 sm:py-8"
+    >
+      {units.map((unit, i) => (
+        <Fragment key={unit.label}>
+          {i > 0 && (
+            <span
+              aria-hidden="true"
+              className="font-display px-1 text-[clamp(32px,5.2vw,60px)] leading-none text-accent/40 sm:px-2"
+            >
+              :
+            </span>
+          )}
+          <div className="flex flex-col items-center gap-2.5">
+            <span className="font-display text-[clamp(32px,5.2vw,60px)] leading-none tracking-[-0.03em] text-accent tabular-nums [font-stretch:112%]">
+              {unit.value}
+            </span>
+            <span className="label-mono text-[11px] text-muted">{unit.label}</span>
+          </div>
+        </Fragment>
       ))}
     </div>
   );

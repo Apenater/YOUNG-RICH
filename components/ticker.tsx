@@ -8,7 +8,10 @@ export function Ticker() {
   return (
     <div className="overflow-hidden bg-accent py-5 text-ink">
       <p className="sr-only">Temas del programa: {topics.join(", ")}.</p>
-      <div aria-hidden="true" className="flex w-max animate-marquee">
+      <div
+        aria-hidden="true"
+        className="flex w-max motion-safe:animate-marquee hover:[animation-play-state:paused]"
+      >
         {items.map((topic, i) => (
           <span
             key={i}

@@ -1,5 +1,7 @@
 import Image from "next/image";
-import { Accent, Container, Eyebrow, SectionTitle } from "@/components/ui";
+import { Icon } from "@/components/icons";
+import { Reveal } from "@/components/motion";
+import { Accent, Container, SectionTitle } from "@/components/ui";
 import { mentors, type Mentor } from "@/lib/content";
 
 export function Mentors() {
@@ -7,21 +9,18 @@ export function Mentors() {
     <section id="mentores" className="bg-paper px-4 py-20 text-ink sm:px-8 md:py-35">
       <Container className="flex flex-col gap-14">
         <div className="grid items-end gap-12 lg:grid-cols-[1.4fr_1fr]">
-          <div className="flex flex-col gap-7">
-            <Eyebrow tone="light">03 / Quiénes somos</Eyebrow>
-            <SectionTitle>
-              Dos jóvenes <Accent>salvadoreños.</Accent> Una visión.
-            </SectionTitle>
-          </div>
-          <p className="text-lg leading-relaxed text-body">
+          <SectionTitle>
+            Dos jóvenes <Accent>salvadoreños.</Accent> Una visión.
+          </SectionTitle>
+          <Reveal as="p" delay={150} className="text-lg leading-relaxed text-body">
             Creamos Young &amp; Rich para compartir nuestros conocimientos, experiencias y
             herramientas en el mundo de las finanzas, las inversiones y los negocios.
-          </p>
+          </Reveal>
         </div>
 
         <div className="grid gap-6 lg:grid-cols-2">
-          {mentors.map((mentor) => (
-            <MentorCard key={mentor.name} mentor={mentor} />
+          {mentors.map((mentor, i) => (
+            <MentorCard key={mentor.name} mentor={mentor} delay={i * 130} />
           ))}
         </div>
       </Container>
@@ -29,9 +28,13 @@ export function Mentors() {
   );
 }
 
-function MentorCard({ mentor }: { mentor: Mentor }) {
+function MentorCard({ mentor, delay }: { mentor: Mentor; delay: number }) {
   return (
-    <article className="flex flex-col overflow-hidden rounded-[28px] border border-paper-line bg-paper-2">
+    <Reveal
+      as="article"
+      delay={delay}
+      className="flex flex-col overflow-hidden rounded-[28px] border border-paper-line bg-paper-2"
+    >
       <div className="bg-stripes relative grid aspect-[5/4] place-items-center">
         {mentor.photo ? (
           <Image
@@ -65,7 +68,24 @@ function MentorCard({ mentor }: { mentor: Mentor }) {
             {paragraph}
           </p>
         ))}
+        <ul className="mt-2 flex flex-wrap gap-2.5">
+          {mentor.socials.map((social) => (
+            <li key={social.href}>
+              <a
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-11 items-center gap-2 rounded-full border border-paper-line px-4 text-sm font-semibold text-ink transition-colors duration-200 hover:border-ink hover:bg-ink hover:text-paper"
+              >
+                <Icon name="music" strokeWidth={1.8} className="size-4" />
+                {social.network} · {social.handle}
+                <Icon name="arrowUpRight" strokeWidth={2} className="size-3.5" />
+                <span className="sr-only">(se abre en una pestaña nueva)</span>
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
-    </article>
+    </Reveal>
   );
 }

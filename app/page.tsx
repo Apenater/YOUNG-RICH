@@ -1,9 +1,12 @@
+import { EdenBadge } from "@/components/eden-badge";
+import { EdenCredit } from "@/components/eden-credit";
 import { Faq } from "@/components/faq";
 import { FinalCta } from "@/components/final-cta";
 import { Hero } from "@/components/hero";
 import { Includes } from "@/components/includes";
 import { Manifesto } from "@/components/manifesto";
 import { Mentors } from "@/components/mentors";
+import { Partners } from "@/components/partners";
 import { Pricing } from "@/components/pricing";
 import { Program } from "@/components/program";
 import { SiteFooter } from "@/components/site-footer";
@@ -21,11 +24,14 @@ export default function Home() {
         <Program />
         <Mentors />
         <Includes />
+        <Partners />
         <Pricing />
         <Faq />
         <FinalCta />
       </main>
       <SiteFooter />
+      <EdenCredit />
+      <EdenBadge />
     </>
   );
 }

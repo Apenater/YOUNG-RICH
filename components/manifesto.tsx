@@ -1,9 +1,14 @@
 import type { ReactNode } from "react";
-import { Container, Eyebrow } from "@/components/ui";
+import { Reveal } from "@/components/motion";
+import { Container } from "@/components/ui";
 
-function Highlight({ children }: { children: ReactNode }) {
+/** Palabra resaltada: el fondo se pinta de izquierda a derecha, una tras otra (`delay` en ms). */
+function Highlight({ children, delay }: { children: ReactNode; delay: number }) {
   return (
-    <span className="font-accent box-decoration-clone rounded-[0.2em] bg-accent px-[0.16em]">
+    <span
+      className="hl font-accent box-decoration-clone rounded-[0.2em] px-[0.16em]"
+      style={{ transitionDelay: `${delay}ms` }}
+    >
       {children}
     </span>
   );
@@ -12,17 +17,22 @@ function Highlight({ children }: { children: ReactNode }) {
 export function Manifesto() {
   return (
     <section className="bg-paper px-4 py-20 text-ink sm:px-8 md:py-35">
-      <Container className="grid gap-12 lg:grid-cols-[1fr_3fr]">
-        <Eyebrow tone="light">01 / La idea</Eyebrow>
-        <div className="flex flex-col gap-14">
-          <p className="text-[clamp(28px,3.5vw,50px)] leading-[1.14] font-medium tracking-[-0.025em]">
+      <Container>
+        <div className="flex max-w-[960px] flex-col gap-14">
+          <Reveal
+            as="p"
+            className="text-[clamp(28px,3.5vw,50px)] leading-[1.14] font-medium tracking-[-0.025em]"
+          >
             <span className="font-display">Young &amp; Rich</span> no se trata únicamente de generar
             riqueza económica, sino de construir una mentalidad basada en el{" "}
-            <Highlight>conocimiento</Highlight>, la <Highlight>disciplina</Highlight>, la{" "}
-            <Highlight>visión</Highlight> y la capacidad de identificar{" "}
-            <Highlight>oportunidades</Highlight>.
-          </p>
-          <div className="flex flex-wrap items-center gap-4.5 border-t border-paper-line pt-8">
+            <Highlight delay={500}>conocimiento</Highlight>, la{" "}
+            <Highlight delay={750}>disciplina</Highlight>, la <Highlight delay={1000}>visión</Highlight>{" "}
+            y la capacidad de identificar <Highlight delay={1250}>oportunidades</Highlight>.
+          </Reveal>
+          <Reveal
+            delay={200}
+            className="flex flex-wrap items-center gap-4.5 border-t border-paper-line pt-8"
+          >
             <div aria-hidden="true" className="flex">
               <span className="label-mono grid size-13 place-items-center rounded-full border-3 border-paper bg-ink text-[13px] text-paper">
                 JP
@@ -33,9 +43,9 @@ export function Manifesto() {
             </div>
             <p className="text-[17px] leading-normal text-body">
               Creado por <strong className="text-ink">Javier Portillo</strong> y{" "}
-              <strong className="text-ink">David [Apellido]</strong>, dos jóvenes salvadoreños.
+              <strong className="text-ink">David Barrientos</strong>, dos jóvenes salvadoreños.
             </p>
-          </div>
+          </Reveal>
         </div>
       </Container>
     </section>
