@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+/* ── Design tokens ─────────────────────────────────────────── */
+@theme {
+  --color-ink: #0b0c0a;
+  --color-ink-2: #151613;
+  --color-ink-3: #0f100e;
+  --color-line: #2a2b27;
+  --color-line-2: #3a3b36;
+  --color-paper: #f2f0ea;
+  --color-paper-2: #fbfaf6;
+  --color-paper-line: #dad6cb;
+  --color-ticket-line: #c9c5b9;
+  --color-muted: #a6a59d;
+  --color-muted-2: #b9b7ae;
+  --color-soft: #c9c7be;
+  --color-subtle: #57564f;
+  --color-body: #3d3c37;
+  --color-on-accent: #1e1f1b;
+
+  /* Color de acento de la marca. Cambiarlo aquí lo cambia en toda la página. */
+  --color-accent: #cdf24b;
+
+  --animate-marquee: marquee 40s linear infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+@theme inline {
+  --font-sans: var(--font-archivo), system-ui, sans-serif;
+  --font-serif: var(--font-instrument), Georgia, serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+}
+
+/* ── Type utilities ────────────────────────────────────────── */
+@utility font-display {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-stretch: 118%;
+  text-transform: uppercase;
+}
+
+@utility font-accent {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  text-transform: none;
+}
+
+@utility label-mono {
+  font-family: var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ── Decorative backgrounds ────────────────────────────────── */
+@utility bg-grid {
+  background-image:
+    linear-gradient(rgb(242 240 234 / 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(242 240 234 / 0.05) 1px, transparent 1px);
+  background-size: 72px 72px;
+  background-position: center top;
+}
+
+@utility bg-stripes {
+  background: repeating-linear-gradient(135deg, #1a1b18 0 14px, #121310 14px 28px);
+}
+
+@utility bg-barcode {
+  background: repeating-linear-gradient(
+    90deg,
+    var(--color-ink) 0 2px,
+    transparent 2px 5px,
+    var(--color-ink) 5px 6px,
+    transparent 6px 9px,
+    var(--color-ink) 9px 12px,
+    transparent 12px 14px
+  );
+}
+
+/* ── Base ──────────────────────────────────────────────────── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--color-ink);
+    color: var(--color-paper);
+    font-family: var(--font-sans);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-marquee {
+    animation: none;
+  }
+}
